@@ -48,7 +48,7 @@ public class Receipt {
 		}
 		str.append("Sales Taxes: ")
 		.append(this.totalSalesTax)
-		.append("\r\n")
+		.append("\n")
 		.append("Total: ")
 		.append(this.totalPrice);
 
@@ -62,7 +62,7 @@ public class Receipt {
 		.append(anItem.getProductName())
 		.append(": ")
 		.append(anItem.getPrice().getNetPrice())
-		.append("\r\n");
+		.append("\n");
 
 		return str.toString();		
 	}
