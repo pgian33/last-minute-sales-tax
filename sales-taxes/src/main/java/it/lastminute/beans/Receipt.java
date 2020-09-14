@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Receipt {
 
+	public static final String EOL = System.getProperty("line.separator");
+	
 	private List<Item> itemsList;
 	private BigDecimal totalPrice;
 	private BigDecimal totalSalesTax;
@@ -48,7 +50,7 @@ public class Receipt {
 		}
 		str.append("Sales Taxes: ")
 		.append(this.totalSalesTax)
-		.append("\n")
+		.append(EOL)
 		.append("Total: ")
 		.append(this.totalPrice);
 
@@ -56,13 +58,14 @@ public class Receipt {
 	}
 
 	private String getAnItemReceipt(Item anItem) {
+		String EOL = System.getProperty("line.separator");
 		StringBuilder str = new StringBuilder(); 
 		str.append(anItem.getQuantity())
 		.append(" ")
 		.append(anItem.getProductName())
 		.append(": ")
 		.append(anItem.getPrice().getNetPrice())
-		.append("\n");
+		.append(EOL);
 
 		return str.toString();		
 	}

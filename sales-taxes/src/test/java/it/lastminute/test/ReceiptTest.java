@@ -27,7 +27,7 @@ public class ReceiptTest {
 	public static final String INPUT_1 = "input/receipt/inputTest1";
 	public static final String INPUT_2 = "input/receipt/inputTest2";
 	public static final String INPUT_3 = "input/receipt/inputTest3";
-
+	
 	public static final String OUTPUT_1 = "output/outputTest1";
 	public static final String OUTPUT_2 = "output/outputTest2";
 	public static final String OUTPUT_3 = "output/outputTest3";
