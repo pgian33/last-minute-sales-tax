@@ -58,7 +58,6 @@ public class Receipt {
 	}
 
 	private String getAnItemReceipt(Item anItem) {
-		String EOL = System.getProperty("line.separator");
 		StringBuilder str = new StringBuilder(); 
 		str.append(anItem.getQuantity())
 		.append(" ")
