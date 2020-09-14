@@ -1,0 +1,107 @@
+[main] DEBUG it.lastminute.test.ReceiptTest  - > Starting testReceipt1
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> getGood(aGood=1 book at 12.49)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=book)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> formatProductName(productName=book)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=book)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << formatProductName: formattedProductName=book
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << getGood tmpGood=Good [isImported=false, type=BOOK_TYPE, price=Price [originalPrice=12.49, netPrice=12.49, rate=0, salesTaxAmount=0.00], quantity=1])
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> getGood(aGood=1 music CD at 14.99)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=music CD)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> formatProductName(productName=music CD)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=music CD)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << formatProductName: formattedProductName=music CD
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << getGood tmpGood=Good [isImported=false, type=OTHER_TYPE, price=Price [originalPrice=14.99, netPrice=16.49, rate=10, salesTaxAmount=1.50], quantity=1])
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> getGood(aGood=1 chocolate bar at 0.85)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=chocolate bar)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> formatProductName(productName=chocolate bar)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=chocolate bar)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << formatProductName: formattedProductName=chocolate bar
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << getGood tmpGood=Good [isImported=false, type=FOOD_TYPE, price=Price [originalPrice=0.85, netPrice=0.85, rate=0, salesTaxAmount=0.00], quantity=1])
+[main] DEBUG it.lastminute.test.ReceiptTest  - Check equals:
+ myReceipt=1 book: 12.49
+1 music CD: 16.49
+1 chocolate bar: 0.85
+Sales Taxes: 1.50
+Total: 29.83 
+ and content=1 book: 12.49
+1 music CD: 16.49
+1 chocolate bar: 0.85
+Sales Taxes: 1.50
+Total: 29.83
+[main] DEBUG it.lastminute.test.ReceiptTest  - > Starting testReceipt2
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> getGood(aGood=1 imported box of chocolates at 10.00)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=imported box of chocolates)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=true
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> formatProductName(productName=imported box of chocolates)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=imported box of chocolates)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=true
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << formatProductName: formattedProductName=imported box of chocolates
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << getGood tmpGood=Good [isImported=true, type=FOOD_TYPE, price=Price [originalPrice=10.00, netPrice=10.50, rate=5, salesTaxAmount=0.50], quantity=1])
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> getGood(aGood=1 imported bottle of perfume at 47.50)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=imported bottle of perfume)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=true
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> formatProductName(productName=imported bottle of perfume)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=imported bottle of perfume)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=true
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << formatProductName: formattedProductName=imported bottle of perfume
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << getGood tmpGood=Good [isImported=true, type=OTHER_TYPE, price=Price [originalPrice=47.50, netPrice=54.65, rate=15, salesTaxAmount=7.15], quantity=1])
+[main] DEBUG it.lastminute.test.ReceiptTest  - Check equals:
+ myReceipt=1 imported box of chocolates: 10.50
+1 imported bottle of perfume: 54.65
+Sales Taxes: 7.65
+Total: 65.15 
+ and content=1 imported box of chocolates: 10.50
+1 imported bottle of perfume: 54.65
+Sales Taxes: 7.65
+Total: 65.15
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> getGood(aGood=1 imported bottle of perfume at 27.99)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=imported bottle of perfume)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=true
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> formatProductName(productName=imported bottle of perfume)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=imported bottle of perfume)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=true
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << formatProductName: formattedProductName=imported bottle of perfume
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << getGood tmpGood=Good [isImported=true, type=OTHER_TYPE, price=Price [originalPrice=27.99, netPrice=32.19, rate=15, salesTaxAmount=4.20], quantity=1])
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> getGood(aGood=1 bottle of perfume at 18.99)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=bottle of perfume)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> formatProductName(productName=bottle of perfume)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=bottle of perfume)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << formatProductName: formattedProductName=bottle of perfume
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << getGood tmpGood=Good [isImported=false, type=OTHER_TYPE, price=Price [originalPrice=18.99, netPrice=20.89, rate=10, salesTaxAmount=1.90], quantity=1])
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> getGood(aGood=1 packet of headache pills at 9.75)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=packet of headache pills)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> formatProductName(productName=packet of headache pills)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=packet of headache pills)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=false
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << formatProductName: formattedProductName=packet of headache pills
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << getGood tmpGood=Good [isImported=false, type=MEDICAL_TYPE, price=Price [originalPrice=9.75, netPrice=9.75, rate=0, salesTaxAmount=0.00], quantity=1])
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> getGood(aGood=1 box of imported chocolates at 11.25)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=box of imported chocolates)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=true
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> formatProductName(productName=box of imported chocolates)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - >> isImported(productName=box of imported chocolates)
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << isImported: isImported=true
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << formatProductName: formattedProductName=imported box of chocolates
+[main] DEBUG it.lastminute.helper.GoodsHelper  - << getGood tmpGood=Good [isImported=true, type=FOOD_TYPE, price=Price [originalPrice=11.25, netPrice=11.85, rate=5, salesTaxAmount=0.60], quantity=1])
+[main] DEBUG it.lastminute.test.ReceiptTest  - Check equals:
+ myReceipt=1 imported bottle of perfume: 32.19
+1 bottle of perfume: 20.89
+1 packet of headache pills: 9.75
+1 imported box of chocolates: 11.85
+Sales Taxes: 6.70
+Total: 74.68 
+ and content=1 imported bottle of perfume: 32.19
+1 bottle of perfume: 20.89
+1 packet of headache pills: 9.75
+1 imported box of chocolates: 11.85
+Sales Taxes: 6.70
+Total: 74.68
