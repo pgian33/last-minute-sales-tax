@@ -55,4 +55,4 @@ In src/test/java are present the following tests:
 - PriceTest -> checks the correct creation of Price beans
 - ReceiptTest -> checks the <b>output1</b>, <b>output2</b>, <b>output3</b> provided above in this page. You can edit input and output files and run a test using different data as input/output.
 
-You have to run the provided tests using Junit 5. 
+You have to run the provided tests using Junit 5 and Java >= 8.
