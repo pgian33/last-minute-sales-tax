@@ -46,7 +46,7 @@ Total: 74.68
 
 ## HOW TO TEST
 
-In src/resources are present two folders:
+In src/resources are present two folders: 
 - input -> contains files used as input for Junit test
 - output -> contains files used to check the provided output
 
