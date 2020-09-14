@@ -6,9 +6,9 @@ import java.math.RoundingMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import it.lastminute.beans.Good;
+import it.lastminute.beans.Item;
 import it.lastminute.beans.Price;
-import it.lastminute.enumerations.GoodTypeList;
+import it.lastminute.enumerations.ItemTypeList;
 import it.lastminute.enumerations.SalesTax;
 
 public class PriceBuilder {
@@ -31,13 +31,13 @@ public class PriceBuilder {
 		return this;
 	}
 
-	public PriceBuilder rate(Good aGood) {
-		_log.trace(">> rate(Good aGood)");
-		if(aGood != null) {
-			if(GoodTypeList.OTHER_TYPE.equals(aGood.getType())) {
+	public PriceBuilder rate(Item anItem) {
+		_log.trace(">> rate(Item anItem)");
+		if(anItem != null) {
+			if(ItemTypeList.OTHER_TYPE.equals(anItem.getType())) {
 				this.rate = SalesTax.STANDARD_TAX.getRate();
 			}
-			if(aGood.isImported()) {
+			if(anItem.isImported()) {
 				this.rate = this.rate + SalesTax.IMPORTED_TAX.getRate();
 			}
 		}
@@ -45,9 +45,9 @@ public class PriceBuilder {
 		return this;
 	}
 
-	public PriceBuilder salesTaxAmount(Good aGood) {
-		_log.trace(">> salesTaxAmount(Good aGood)");
-		if(aGood != null) {
+	public PriceBuilder salesTaxAmount(Item anItem) {
+		_log.trace(">> salesTaxAmount(Item anItem)");
+		if(anItem != null) {
 			this.salesTaxAmount = getRoundedAmount(originalPrice.multiply(new BigDecimal(rate)).divide(new BigDecimal(100)));
 		}
 		_log.trace("<< salesTaxAmount: this.salesTaxAmount={}", this.salesTaxAmount);

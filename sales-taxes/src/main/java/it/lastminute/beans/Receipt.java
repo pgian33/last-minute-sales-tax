@@ -5,16 +5,16 @@ import java.util.List;
 
 public class Receipt {
 
-	private List<Good> goodsList;
+	private List<Item> itemsList;
 	private BigDecimal totalPrice;
 	private BigDecimal totalSalesTax;
-
-	public List<Good> getGoodsList() {
-		return goodsList;
+	
+	public List<Item> getItemsList() {
+		return itemsList;
 	}
 
-	public void setGoodsList(List<Good> goodsList) {
-		this.goodsList = goodsList;
+	public void setItemsList(List<Item> itemsList) {
+		this.itemsList = itemsList;
 	}
 
 	public BigDecimal getTotalPrice() {
@@ -33,9 +33,9 @@ public class Receipt {
 		this.totalSalesTax = totalSalesTax;
 	}
 
-	public Receipt(List<Good> goodsList, BigDecimal totalPrice, BigDecimal totalSalesTax) {
+	public Receipt(List<Item> itemsList, BigDecimal totalPrice, BigDecimal totalSalesTax) {
 		super();
-		this.goodsList = goodsList;
+		this.itemsList = itemsList;
 		this.totalPrice = totalPrice;
 		this.totalSalesTax = totalSalesTax;
 	}
@@ -43,8 +43,8 @@ public class Receipt {
 	public String getReceipt() {
 		StringBuilder str = new StringBuilder(); 
 
-		for (Good good : goodsList) {
-			str.append(getAGoodReceipt(good));
+		for (Item anItem : itemsList) {
+			str.append(getAnItemReceipt(anItem));
 		}
 		str.append("Sales Taxes: ")
 		.append(this.totalSalesTax)
@@ -55,13 +55,13 @@ public class Receipt {
 		return str.toString();
 	}
 
-	private String getAGoodReceipt(Good aGood) {
+	private String getAnItemReceipt(Item anItem) {
 		StringBuilder str = new StringBuilder(); 
-		str.append(aGood.getQuantity())
+		str.append(anItem.getQuantity())
 		.append(" ")
-		.append(aGood.getProductName())
+		.append(anItem.getProductName())
 		.append(": ")
-		.append(aGood.getPrice().getNetPrice())
+		.append(anItem.getPrice().getNetPrice())
 		.append("\r\n");
 
 		return str.toString();		

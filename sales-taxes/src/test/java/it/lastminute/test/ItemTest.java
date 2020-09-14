@@ -15,26 +15,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import it.lastminute.beans.Item;
-import it.lastminute.beans.Receipt;
-import it.lastminute.builder.ReceiptBuilder;
 import it.lastminute.exceptions.NoInputItemException;
 import it.lastminute.exceptions.NoMatchInputException;
 import it.lastminute.helper.ItemHelper;
 
-public class ReceiptTest {
+public class ItemTest {
 
-	private static final Logger _log = LoggerFactory.getLogger(ReceiptTest.class);
-	public static final String INPUT_1 = "input/receipt/inputTest1";
-	public static final String INPUT_2 = "input/receipt/inputTest2";
-	public static final String INPUT_3 = "input/receipt/inputTest3";
+	private static final Logger _log = LoggerFactory.getLogger(ItemTest.class);
 
-	public static final String OUTPUT_1 = "output/outputTest1";
-	public static final String OUTPUT_2 = "output/outputTest2";
-	public static final String OUTPUT_3 = "output/outputTest3";
+	public static final String INPUT_1 = "input/item/inputTest1";
+	public static final String INPUT_2 = "input/item/inputTest2";
+	public static final String INPUT_3 = "input/item/inputTest3";
+	public static final String INPUT_4 = "input/item/inputTest4";
 
 	@Test
-	void testReceipt1() throws IOException, URISyntaxException {
-		_log.debug("> Starting testReceipt1");
+	void testItem1() throws IOException, URISyntaxException {
+		_log.debug("> Starting testItem1");
+
 		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 		List<String> lines = Files.readAllLines(Paths.get(classLoader.getResource(INPUT_1).toURI()), StandardCharsets.US_ASCII);
 		List<Item> itemsList = new ArrayList<Item>();
@@ -49,21 +46,15 @@ public class ReceiptTest {
 				_log.error("!! An Exception occurred", ex);
 			}
 		}
-
-		Receipt receipt = ReceiptBuilder.newBuilder()
-				.itemsList(itemsList)
-				.build();
-
-		String myReceipt = receipt.getReceipt();
-		String content = new String (Files.readAllBytes(Paths.get(classLoader.getResource(OUTPUT_1).toURI())));
-		_log.debug("Check equals:\nmyReceipt=\n{} \ncontent=\n{}",  myReceipt, content);
-		assertEquals(myReceipt, content);
+		_log.debug("> Checking size and imported item");
+		assertEquals(3, itemsList.size());
+		assertEquals(0, ItemHelper.countImportedItems(itemsList));
 
 	}
 
 	@Test
-	void testReceipt2() throws IOException, URISyntaxException {
-		_log.debug("> Starting testReceipt2");
+	void testItem2() throws IOException, URISyntaxException {
+		_log.debug("> Starting testItem2");
 		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 		List<String> lines = Files.readAllLines(Paths.get(classLoader.getResource(INPUT_2).toURI()), StandardCharsets.US_ASCII);
 		List<Item> itemsList = new ArrayList<Item>();
@@ -78,20 +69,15 @@ public class ReceiptTest {
 				_log.error("!! An Exception occurred", ex);
 			}
 		}
+		_log.debug("> Checking size and imported item");
+		assertEquals(4, itemsList.size());
+		assertEquals(2, ItemHelper.countImportedItems(itemsList));
 
-		Receipt receipt = ReceiptBuilder.newBuilder()
-				.itemsList(itemsList)
-				.build();
-
-		String myReceipt = receipt.getReceipt();
-		String content = new String (Files.readAllBytes(Paths.get(classLoader.getResource(OUTPUT_2).toURI())));
-		_log.debug("Check equals:\nmyReceipt=\n{} \ncontent=\n{}",  myReceipt, content);
-		assertEquals(myReceipt, content);
 	}
 
 	@Test
-	void testReceipt3() throws IOException, URISyntaxException {
-
+	void testItem3() throws IOException, URISyntaxException {
+		_log.debug("> Starting testItem3");
 		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 		List<String> lines = Files.readAllLines(Paths.get(classLoader.getResource(INPUT_3).toURI()), StandardCharsets.US_ASCII);
 		List<Item> itemsList = new ArrayList<Item>();
@@ -103,17 +89,35 @@ public class ReceiptTest {
 				itemsList.add(anItem);
 			}
 			catch (NoInputItemException | NoMatchInputException ex) {
-				_log.error("!! An Exception occurred", ex);
+				assertEquals(NoInputItemException.class, ex.getClass());
+				assertEquals("No item found", ex.getMessage());
 			}
 		}
+		_log.debug("> Checking size and imported item");
+		assertEquals(2, itemsList.size());
+		assertEquals(2, ItemHelper.countImportedItems(itemsList));
+	}
 
-		Receipt receipt = ReceiptBuilder.newBuilder()
-				.itemsList(itemsList)
-				.build();
+	@Test
+	void testItem4() throws IOException, URISyntaxException {
+		_log.debug("> Starting testItem4");
+		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+		List<String> lines = Files.readAllLines(Paths.get(classLoader.getResource(INPUT_4).toURI()), StandardCharsets.US_ASCII);
+		List<Item> itemsList = new ArrayList<Item>();
 
-		String myReceipt = receipt.getReceipt();
-		String content = new String (Files.readAllBytes(Paths.get(classLoader.getResource(OUTPUT_3).toURI())));
-		_log.debug("Check equals:\nmyReceipt=\n{} \ncontent=\n{}",  myReceipt, content);
-		assertEquals(myReceipt, content);
+		for(String aLine:lines) {
+			String tmpLine = aLine.trim();
+			try {
+				Item anItem = ItemHelper.getItem(tmpLine);
+				itemsList.add(anItem);
+			}
+			catch (NoInputItemException | NoMatchInputException ex) {
+				assertEquals(NoMatchInputException.class, ex.getClass());
+				assertEquals("Format your input record properly", ex.getMessage());
+			}
+		}
+		_log.debug("> Checking size and imported item");
+		assertEquals(2, itemsList.size());
+		assertEquals(2, ItemHelper.countImportedItems(itemsList));
 	}
 }

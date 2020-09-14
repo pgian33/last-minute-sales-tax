@@ -15,12 +15,12 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import it.lastminute.beans.Good;
+import it.lastminute.beans.Item;
 import it.lastminute.beans.Receipt;
 import it.lastminute.builder.ReceiptBuilder;
-import it.lastminute.exceptions.NoInputGoodException;
+import it.lastminute.exceptions.NoInputItemException;
 import it.lastminute.exceptions.NoMatchInputException;
-import it.lastminute.helper.GoodsHelper;
+import it.lastminute.helper.ItemHelper;
 
 public class PriceTest {
 
@@ -34,21 +34,21 @@ public class PriceTest {
 		_log.debug("> Starting testPrice1");
 		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 		List<String> lines = Files.readAllLines(Paths.get(classLoader.getResource(INPUT_1).toURI()), StandardCharsets.US_ASCII);
-		List<Good> goodsList = new ArrayList<Good>();
+		List<Item> itemsList = new ArrayList<Item>();
 
 		for(String aLine:lines) {
 			String tmpLine = aLine.trim();
 			try {
-				Good aGood = GoodsHelper.getGood(tmpLine);
-				goodsList.add(aGood);
+				Item anItem = ItemHelper.getItem(tmpLine);
+				itemsList.add(anItem);
 			}
-			catch (NoInputGoodException | NoMatchInputException ex) {
+			catch (NoInputItemException | NoMatchInputException ex) {
 				_log.error("!! An Exception occurred", ex);
 			}
 		}
 
 		Receipt receipt = ReceiptBuilder.newBuilder()
-				.goodsList(goodsList)
+				.itemsList(itemsList)
 				.build();
 
 
