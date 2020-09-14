@@ -44,4 +44,15 @@ Total: 65.15
 Sales Taxes: 6.70  
 Total: 74.68
 
-## HOW :
+## HOW TO TEST
+
+In src/resources are present two folders:
+- input -> contains files used as input for Junit test
+- output -> contains files used to check the provided output
+
+In src/test/java are present the following tests:
+- ItemTest -> checks the correct creation of Item beans
+- PriceTest -> checks the correct creation of Price beans
+- ReceiptTest -> checks the output provided above in this page
+
+You have to run the provided tests using Junit 5. 
